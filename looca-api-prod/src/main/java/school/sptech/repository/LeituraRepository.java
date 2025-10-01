@@ -14,37 +14,40 @@ public class LeituraRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    // Metodo para criar a tabela (pode ser chamado no setup)
     public void criarTabela() {
-        String sql = "CREATE TABLE IF NOT EXISTS musica (id INT PRIMARY KEY, nome VARCHAR(100))";
+        String sql = "CREATE TABLE IF NOT EXISTS leitura (id BIGINT PRIMARY KEY," +
+                " dado DOUBLE, " +
+                "unidadeMedida varchar(50), " +
+                "dataHora TIMESTAMP )";
+
         jdbcTemplate.execute(sql);
     }
 
-    // Inserir uma música
     public void salvar(Leitura leitura) {
-        String sql = "INSERT INTO leitura (id, nome) VALUES (?, ?)";
-        jdbcTemplate.update(sql, leitura.getId());
+        String sql = "INSERT INTO leitura (id, dado, unidadeMedida, dataHora) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, leitura.getId(),
+                leitura.getDado(),
+                leitura.getUnidadeMedida(),
+                leitura.getDataHora());
     }
 
-    // Buscar todas as músicas
     public List<Leitura> buscarTodas() {
         String sql = "SELECT * FROM leitura";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Leitura.class));
     }
 
-    // Buscar música por id
     public Leitura buscarPorId(int id) {
         String sql = "SELECT * FROM leitura WHERE id = ?";
         return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Leitura.class), id);
     }
 
-    // Atualizar uma música
-    public void atualizar(Leitura musica) {
-        String sql = "UPDATE leitura SET nome = ? WHERE id = ?";
-        jdbcTemplate.update(sql, musica.getId());
+    public void atualizar(Leitura leitura) {
+        String sql = "UPDATE leitura SET dado = ?, unidadeMedida = ? WHERE id = ?";
+        jdbcTemplate.update(sql, leitura.getId(),
+                leitura.getDado(),
+                leitura.getUnidadeMedida());
     }
 
-    // Deletar uma música pelo id
     public void deletarPorId(int id) {
         String sql = "DELETE FROM leitura WHERE id = ?";
         jdbcTemplate.update(sql, id);

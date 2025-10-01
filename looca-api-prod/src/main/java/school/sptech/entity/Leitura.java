@@ -16,6 +16,10 @@ public class Leitura {
         this.dataHora = dataHora;
     }
 
+    public Leitura() {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -46,5 +50,15 @@ public class Leitura {
 
     public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
+    }
+
+    @Override
+    public String toString() {
+        return "Leitura{" +
+                "id=" + id +
+                ", dado=" + dado +
+                ", unidadeMedida='" + unidadeMedida + '\'' +
+                ", dataHora=" + dataHora +
+                '}';
     }
 }

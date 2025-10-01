@@ -11,4 +11,5 @@ public class LeituraDTO {
     public Long getId() {
         return id;
     }
+
 }
