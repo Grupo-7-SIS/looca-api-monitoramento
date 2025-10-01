@@ -15,7 +15,8 @@ public class LeituraRepository {
     }
 
     public void criarTabela() {
-        String sql = "CREATE TABLE IF NOT EXISTS leitura (id BIGINT PRIMARY KEY," +
+        String sql = "CREATE TABLE IF NOT EXISTS leitura (" +
+                "id BIGINT PRIMARY KEY AUTO_INCREMENT," +
                 " dado DOUBLE, " +
                 "unidadeMedida varchar(50), " +
                 "dataHora TIMESTAMP )";
