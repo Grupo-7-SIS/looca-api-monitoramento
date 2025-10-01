@@ -25,32 +25,46 @@ public class Main {
 
             Long bytesRecebidosAntes = dados.stream().map(RedeInterface::getBytesRecebidos).reduce(0L, Long::sum);
             Long bytesEnviadosAntes = dados.stream().map(RedeInterface::getBytesEnviados).reduce(0L, Long::sum);
+            Long pacotesRecebidosAntes = dados.stream().map(RedeInterface::getPacotesRecebidos).reduce(0L, Long::sum);
+            Long pacotesEnviadosAntes = dados.stream().map(RedeInterface::getPacotesEnviados).reduce(0L, Long::sum);
 
             Thread.sleep(5000);
 
             Long bytesRecebidosDepois = dados.stream().map(RedeInterface::getBytesRecebidos).reduce(0L, Long::sum);
             Long bytesEnviadosDepois = dados.stream().map(RedeInterface::getBytesEnviados).reduce(0L, Long::sum);
+            Long pacotesRecebidosDepois = dados.stream().map(RedeInterface::getPacotesRecebidos).reduce(0L, Long::sum);
+            Long pacotesEnviadosDepois = dados.stream().map(RedeInterface::getPacotesEnviados).reduce(0L, Long::sum);
 
-            Long diferencaBytes = bytesRecebidosDepois - bytesRecebidosAntes;
-            Long diferencaBytesEnviados = bytesEnviadosDepois - bytesEnviadosAntes;
+            double diferencaPacotesRecebidos = pacotesRecebidosDepois.doubleValue() - pacotesRecebidosAntes.doubleValue();
+            double diferencaPacotesEnviados = pacotesEnviadosDepois.doubleValue() - pacotesEnviadosAntes.doubleValue();
+            long diferencaBytes = bytesRecebidosDepois - bytesRecebidosAntes;
+            long diferencaBytesEnviados = bytesEnviadosDepois - bytesEnviadosAntes;
 
-            // Converte para Mbps
-            Double downloadMbps = (diferencaBytes * 8.0) / 1_000_000.0;
-            Double uploadMbps = (diferencaBytesEnviados * 8.0) / 1_000_000.0;
+            // Packet Loss
+            double packetLoss = 0.0;
+            if (diferencaPacotesEnviados > 0) {
+                packetLoss = (diferencaPacotesEnviados - diferencaPacotesRecebidos) / diferencaPacotesEnviados * 100.0;
+                packetLoss = Math.max(0.0, Math.min(packetLoss, 100.0));
+            }
+
+            // Mbps
+            double downloadMbps = (diferencaBytes * 8.0) / 1_000_000.0;
+            double uploadMbps = (diferencaBytesEnviados * 8.0) / 1_000_000.0;
 
             // Salva no banco
             repository.salvar(new Leitura(id++, downloadMbps, "Mbps", LocalDateTime.now()));
             repository.salvar(new Leitura(id++, uploadMbps, "Mbps", LocalDateTime.now()));
+            repository.salvar(new Leitura(id++, packetLoss, "%", LocalDateTime.now()));
 
-            System.out.println();
-            System.out.println("========== MONITORAMENTO DE REDE ==========");
+            System.out.println("\n========== MONITORAMENTO DE REDE ==========");
             System.out.printf("Velocidade de download: %.2f Mbps%n", downloadMbps);
             System.out.printf("Velocidade de upload: %.2f Mbps%n", uploadMbps);
+            System.out.printf("Packet Loss: %.2f %%\n", packetLoss);
             System.out.println("-------------------------------------------");
+
             printarLeituras(repository);
         }
     }
-
 
     private static void printarLeituras(LeituraRepository repository) {
         List<Leitura> leituras = repository.buscarTodas();
