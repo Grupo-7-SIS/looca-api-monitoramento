@@ -53,4 +53,5 @@ public class LeituraRepository {
         String sql = "DELETE FROM leitura WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
+
 }
