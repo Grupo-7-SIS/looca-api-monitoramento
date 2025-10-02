@@ -1,9 +1,12 @@
 package school.sptech.repository;
 
+import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.rede.RedeInterface;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import school.sptech.entity.Leitura;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LeituraRepository {
@@ -35,6 +38,7 @@ public class LeituraRepository {
     public List<Leitura> buscarTodas() {
         String sql = "SELECT * FROM leitura";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Leitura.class));
+
     }
 
     public Leitura buscarPorId(int id) {
