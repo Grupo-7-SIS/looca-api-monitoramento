@@ -4,61 +4,40 @@ import java.time.LocalDateTime;
 
 public class Leitura {
 
-    private Long id;
+    private Long idLeitura;
+    private Long idComponente;
+    private Long idMaquina;
     private Double dado;
-    private String unidadeMedida;
-    private LocalDateTime dataHora;
+    private LocalDateTime dthCaptura;
+    private Long idNucleo;
 
-    public Leitura(Long id, Double dado, String unidadeMedida, LocalDateTime dataHora) {
-        this.id = id;
+    public Leitura() {}
+
+    public Leitura(Long idLeitura, Long idComponente, Long idMaquina, Double dado,
+                   LocalDateTime dthCaptura, Long idNucleo) {
+        this.idLeitura = idLeitura;
+        this.idComponente = idComponente;
+        this.idMaquina = idMaquina;
         this.dado = dado;
-        this.unidadeMedida = unidadeMedida;
-        this.dataHora = dataHora;
+        this.dthCaptura = dthCaptura;
+        this.idNucleo = idNucleo;
     }
 
-    public Leitura() {
+    public Long getIdLeitura() { return idLeitura; }
+    public void setIdLeitura(Long idLeitura) { this.idLeitura = idLeitura; }
 
-    }
+    public Long getIdComponente() { return idComponente; }
+    public void setIdComponente(Long idComponente) { this.idComponente = idComponente; }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getIdMaquina() { return idMaquina; }
+    public void setIdMaquina(Long idMaquina) { this.idMaquina = idMaquina; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Double getDado() { return dado; }
+    public void setDado(Double dado) { this.dado = dado; }
 
-    public Double getDado() {
-        return dado;
-    }
+    public LocalDateTime getDthCaptura() { return dthCaptura; }
+    public void setDthCaptura(LocalDateTime dthCaptura) { this.dthCaptura = dthCaptura; }
 
-    public void setDado(Double dado) {
-        this.dado = dado;
-    }
-
-    public String getUnidadeMedida() {
-        return unidadeMedida;
-    }
-
-    public void setUnidadeMedida(String unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
-    }
-
-    public LocalDateTime getDataHora() {
-        return dataHora;
-    }
-
-    public void setDataHora(LocalDateTime dataHora) {
-        this.dataHora = dataHora;
-    }
-
-    @Override
-    public String toString() {
-        return "Leitura{" +
-                "id=" + id +
-                ", dado=" + dado +
-                ", unidadeMedida='" + unidadeMedida + '\'' +
-                ", dataHora=" + dataHora +
-                '}';
-    }
+    public Long getIdNucleo() { return idNucleo; }
+    public void setIdNucleo(Long idNucleo) { this.idNucleo = idNucleo; }
 }

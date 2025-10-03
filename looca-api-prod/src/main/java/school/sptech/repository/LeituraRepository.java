@@ -1,12 +1,7 @@
 package school.sptech.repository;
-
-import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.rede.RedeInterface;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
-import school.sptech.entity.Leitura;
+import school.sptech.dto.LeituraDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LeituraRepository {
@@ -17,45 +12,42 @@ public class LeituraRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public void criarTabela() {
-        String sql = "CREATE TABLE IF NOT EXISTS leitura (" +
-                "id BIGINT PRIMARY KEY AUTO_INCREMENT," +
-                " dado DOUBLE, " +
-                "unidadeMedida varchar(50), " +
-                "dataHora TIMESTAMP )";
-
-        jdbcTemplate.execute(sql);
+    public void salvarComponenteSeNaoExistir(Long idMaquina, String nomeComponente, String unidadeMedida) {
+        String sqlCheck = "SELECT COUNT(*) FROM componente WHERE idMaquina = ? AND nomeComponente = ?";
+        Integer count = jdbcTemplate.queryForObject(sqlCheck, Integer.class, idMaquina, nomeComponente);
+        if (count == null || count == 0) {
+            String sqlInsert = "INSERT INTO componente (idMaquina, nomeComponente, unidadeMedida) VALUES (?, ?, ?)";
+            jdbcTemplate.update(sqlInsert, idMaquina, nomeComponente, unidadeMedida);
+        }
     }
 
-    public void salvar(Leitura leitura) {
-        String sql = "INSERT INTO leitura (id, dado, unidadeMedida, dataHora) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, leitura.getId(),
-                leitura.getDado(),
-                leitura.getUnidadeMedida(),
-                leitura.getDataHora());
+    public Long buscarIdComponente(Long idMaquina, String nomeComponente) {
+        String sql = "SELECT idComponente FROM componente WHERE idMaquina = ? AND nomeComponente = ? LIMIT 1";
+        return jdbcTemplate.queryForObject(sql, Long.class, idMaquina, nomeComponente);
     }
 
-    public List<Leitura> buscarTodas() {
-        String sql = "SELECT * FROM leitura";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Leitura.class));
-
+    public void salvarLeitura(Long idComponente, Long idMaquina, Double dado, Integer idNucleo) {
+        String sql = "INSERT INTO leitura (idComponente, idMaquina, dado, dthCaptura, idNucleo) VALUES (?, ?, ?, NOW(), ?)";
+        jdbcTemplate.update(sql, idComponente, idMaquina, dado, idNucleo);
     }
 
-    public Leitura buscarPorId(int id) {
-        String sql = "SELECT * FROM leitura WHERE id = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Leitura.class), id);
+    public List<LeituraDTO> buscarTodasDTOComComponente() {
+        String sql = """
+                SELECT l.idLeitura, l.idComponente, l.idMaquina, l.dado, l.dthCaptura, l.idNucleo,
+                       c.nomeComponente, c.unidadeMedida
+                FROM leitura l
+                JOIN componente c ON l.idComponente = c.idComponente
+                ORDER BY l.dthCaptura DESC
+                """;
+        return jdbcTemplate.query(sql, (rs, rowNum) -> new LeituraDTO(
+                rs.getLong("idLeitura"),
+                rs.getLong("idComponente"),
+                rs.getLong("idMaquina"),
+                rs.getDouble("dado"),
+                rs.getTimestamp("dthCaptura").toLocalDateTime(),
+                rs.getObject("idNucleo") != null ? rs.getLong("idNucleo") : null,
+                rs.getString("nomeComponente"),
+                rs.getString("unidadeMedida")
+        ));
     }
-
-    public void atualizar(Leitura leitura) {
-        String sql = "UPDATE leitura SET dado = ?, unidadeMedida = ? WHERE id = ?";
-        jdbcTemplate.update(sql, leitura.getId(),
-                leitura.getDado(),
-                leitura.getUnidadeMedida());
-    }
-
-    public void deletarPorId(int id) {
-        String sql = "DELETE FROM leitura WHERE id = ?";
-        jdbcTemplate.update(sql, id);
-    }
-
 }

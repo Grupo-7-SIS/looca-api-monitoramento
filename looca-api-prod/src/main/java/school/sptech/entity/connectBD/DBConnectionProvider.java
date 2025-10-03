@@ -10,10 +10,10 @@ public class DBConnectionProvider {
 
     public DBConnectionProvider() {
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUrl("jdbc:h2:mem:leitura;DB_CLOSE_DELAY=-1");
-        basicDataSource.setUsername("looca");
-        basicDataSource.setPassword("");
-        basicDataSource.setDriverClassName("org.h2.Driver");
+        basicDataSource.setUrl("jdbc:mysql://localhost:3306/cyberbeef?useSSL=false&serverTimezone=UTC");
+        basicDataSource.setUsername("root");  // seu usuário do MySQL
+        basicDataSource.setPassword("stevejobs");  // sua senha do MySQL
+        basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
 
         this.basicDataSource = basicDataSource;
         this.jdbcTemplate = new JdbcTemplate(basicDataSource);

@@ -4,31 +4,33 @@ import java.time.LocalDateTime;
 
 public class LeituraDTO {
 
-    private Long id;
+    private Long idLeitura;
+    private Long idComponente;
+    private Long idMaquina;
     private Double dado;
+    private LocalDateTime dthCaptura;
+    private Long idNucleo;
+    private String nomeComponente;
     private String unidadeMedida;
-    private LocalDateTime dataHora;
 
-    public LeituraDTO(Long id, Double dado, String unidadeMedida, LocalDateTime dataHora) {
-        this.id = id;
+    public LeituraDTO(Long idLeitura, Long idComponente, Long idMaquina, Double dado,
+                      LocalDateTime dthCaptura, Long idNucleo, String nomeComponente, String unidadeMedida) {
+        this.idLeitura = idLeitura;
+        this.idComponente = idComponente;
+        this.idMaquina = idMaquina;
         this.dado = dado;
+        this.dthCaptura = dthCaptura;
+        this.idNucleo = idNucleo;
+        this.nomeComponente = nomeComponente;
         this.unidadeMedida = unidadeMedida;
-        this.dataHora = dataHora;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public Double getDado() {
-        return dado;
-    }
-
-    public String getUnidadeMedida() {
-        return unidadeMedida;
-    }
-
-    public LocalDateTime getDataHora() {
-        return dataHora;
-    }
+    public Long getIdLeitura() { return idLeitura; }
+    public Long getIdComponente() { return idComponente; }
+    public Long getIdMaquina() { return idMaquina; }
+    public Double getDado() { return dado; }
+    public LocalDateTime getDthCaptura() { return dthCaptura; }
+    public Long getIdNucleo() { return idNucleo; }
+    public String getNomeComponente() { return nomeComponente; }
+    public String getUnidadeMedida() { return unidadeMedida; }
 }

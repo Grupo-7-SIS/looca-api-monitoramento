@@ -11,7 +11,6 @@ public class Main {
         DBConnectionProvider db = new DBConnectionProvider();
         LeituraRepository repository = new LeituraRepository(db.getJdbcTemplate());
 
-        repository.criarTabela();
         LeituraService leituraService = new LeituraService(repository);
 
         leituraService.monitorarRede();
