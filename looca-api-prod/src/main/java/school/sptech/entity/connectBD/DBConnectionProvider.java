@@ -10,7 +10,7 @@ public class DBConnectionProvider {
 
     public DBConnectionProvider() {
         BasicDataSource basicDataSource = new BasicDataSource();
-        basicDataSource.setUrl("jdbc:mysql://34.207.117.73:3306/cyberbeef?useSSL=false&serverTimezone=UTC");
+        basicDataSource.setUrl("jdbc:mysql://localhost:3306/cyberbeef?useSSL=false&serverTimezone=UTC");
         basicDataSource.setUsername("root");  // seu usuário do MySQL
         basicDataSource.setPassword("stevejobs");  // sua senha do MySQL
         basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
