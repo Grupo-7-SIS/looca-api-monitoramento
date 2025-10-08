@@ -17,24 +17,32 @@ public class RedeService {
 
     public void monitorarRede() throws InterruptedException {
         Looca looca = new Looca();
-        List<RedeInterface> dados = looca.getRede().getGrupoDeInterfaces().getInterfaces();
+        List<RedeInterface> interfaces = looca.getRede().getGrupoDeInterfaces().getInterfaces();
 
         Long idMaquina = 1L;
-        Long idComponente = 1L;
+        Long idComponente = repository.buscarIdComponenteRede(idMaquina);
 
+        // Se não existir componente 'REDE' cadastrado, interrompe
+        if (idComponente == null) {
+            System.err.println("Nenhum componente do tipo 'REDE' encontrado para a máquina ID " + idMaquina);
+            System.err.println("Cadastre um componente com tipoComponente = 'REDE' antes de iniciar o monitoramento.");
+            return;
+        }
+
+        System.out.println("✅ Monitorando rede para Máquina ID " + idMaquina + " | Componente ID " + idComponente);
 
         while (true) {
-            Long bytesRecebidosAntes = getBytesRecebidos(dados);
-            Long bytesEnviadosAntes = getBytesEnviados(dados);
-            Long pacotesRecebidosAntes = getPacotesRecebidos(dados);
-            Long pacotesEnviadosAntes = getPacotesEnviados(dados);
+            Long bytesRecebidosAntes = getBytesRecebidos(interfaces);
+            Long bytesEnviadosAntes = getBytesEnviados(interfaces);
+            Long pacotesRecebidosAntes = getPacotesRecebidos(interfaces);
+            Long pacotesEnviadosAntes = getPacotesEnviados(interfaces);
 
             Thread.sleep(5000);
 
-            Long bytesRecebidosDepois = getBytesRecebidos(dados);
-            Long bytesEnviadosDepois = getBytesEnviados(dados);
-            Long pacotesRecebidosDepois = getPacotesRecebidos(dados);
-            Long pacotesEnviadosDepois = getPacotesEnviados(dados);
+            Long bytesRecebidosDepois = getBytesRecebidos(interfaces);
+            Long bytesEnviadosDepois = getBytesEnviados(interfaces);
+            Long pacotesRecebidosDepois = getPacotesRecebidos(interfaces);
+            Long pacotesEnviadosDepois = getPacotesEnviados(interfaces);
 
             double downloadMbps = (bytesRecebidosDepois - bytesRecebidosAntes) * 8.0 / 1_000_000.0;
             double uploadMbps = (bytesEnviadosDepois - bytesEnviadosAntes) * 8.0 / 1_000_000.0;
@@ -48,6 +56,7 @@ public class RedeService {
                 packetLoss = Math.max(0.0, Math.min(packetLoss, 100.0));
             }
 
+            // Salva os dados no banco
             repository.salvarDadosRede(idMaquina, idComponente, downloadMbps, uploadMbps, packetLoss);
 
             mostrarPainel(downloadMbps, uploadMbps, packetLoss);
@@ -72,19 +81,19 @@ public class RedeService {
         }
     }
 
-    private Long getBytesRecebidos(List<RedeInterface> dados) {
-        return dados.stream().map(RedeInterface::getBytesRecebidos).reduce(0L, Long::sum);
+    private Long getBytesRecebidos(List<RedeInterface> interfaces) {
+        return interfaces.stream().map(RedeInterface::getBytesRecebidos).reduce(0L, Long::sum);
     }
 
-    private Long getBytesEnviados(List<RedeInterface> dados) {
-        return dados.stream().map(RedeInterface::getBytesEnviados).reduce(0L, Long::sum);
+    private Long getBytesEnviados(List<RedeInterface> interfaces) {
+        return interfaces.stream().map(RedeInterface::getBytesEnviados).reduce(0L, Long::sum);
     }
 
-    private Long getPacotesRecebidos(List<RedeInterface> dados) {
-        return dados.stream().map(RedeInterface::getPacotesRecebidos).reduce(0L, Long::sum);
+    private Long getPacotesRecebidos(List<RedeInterface> interfaces) {
+        return interfaces.stream().map(RedeInterface::getPacotesRecebidos).reduce(0L, Long::sum);
     }
 
-    private Long getPacotesEnviados(List<RedeInterface> dados) {
-        return dados.stream().map(RedeInterface::getPacotesEnviados).reduce(0L, Long::sum);
+    private Long getPacotesEnviados(List<RedeInterface> interfaces) {
+        return interfaces.stream().map(RedeInterface::getPacotesEnviados).reduce(0L, Long::sum);
     }
 }
