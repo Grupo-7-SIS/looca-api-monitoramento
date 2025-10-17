@@ -4,7 +4,74 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="374809be-33d5-4a11-a0d4-d368cc19c99d" name="Changes" comment="" />
+    <list default="true" id="c53d65ca-7d3e-44ba-8b5b-7e7f175c0fd2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/looca-api-prod/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api-prod/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/looca-api-prod/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api-prod/src/main/java/school/sptech/entity/connectBD/DBConnectionProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/looca-api-prod/src/main/java/school/sptech/entity/connectBD/DBConnectionProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api-prod/target/classes/school/sptech/entity/connectBD/DBConnectionProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/looca-api-prod/target/classes/school/sptech/entity/connectBD/DBConnectionProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/pom.xml.versionsBackup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/readme/readmes.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/readme/readmes_old.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/core/Looca.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/discos/Disco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/discos/DiscoGrupo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/discos/Volume.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/dispositivos/DispositivoUsb.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/dispositivos/DispositivosUsbGrupo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/janelas/Janela.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/janelas/JanelaGrupo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/memoria/Memoria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/processador/Processador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/processador/ProcessadorCacheLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/processos/Processo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/processos/ProcessoGrupo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/rede/Rede.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/rede/RedeInterface.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/rede/RedeInterfaceGroup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/rede/RedeParametros.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/servicos/Servico.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/servicos/ServicoGrupo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/sistema/Sistema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/group/temperatura/Temperatura.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/src/main/java/com/github/britooo/looca/api/util/Conversor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/core/Looca.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/discos/Disco.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/discos/DiscoGrupo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/discos/Volume.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/dispositivos/DispositivoUsb.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/dispositivos/DispositivosUsbGrupo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/janelas/Janela.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/janelas/JanelaGrupo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/memoria/Memoria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/processador/Processador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/processador/ProcessadorCacheLoader$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/processador/ProcessadorCacheLoader$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/processador/ProcessadorCacheLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/processos/Processo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/processos/ProcessoGrupo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/rede/Rede.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/rede/RedeInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/rede/RedeInterfaceGroup.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/rede/RedeParametros.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/servicos/Servico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/servicos/ServicoGrupo$STATUS.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/servicos/ServicoGrupo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/sistema/Sistema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/group/temperatura/Temperatura.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/classes/com/github/britooo/looca/api/util/Conversor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/looca-api-2.2.0-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/looca-api-2.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/looca-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,93 +80,37 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;henriquedouradoo&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Grupo-7-SIS/looca-api-monitoramento.git&quot;,
-    &quot;accountId&quot;: &quot;81511b1f-353f-499e-aad5-a02973cd1cd9&quot;
-  }
-}</component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
-}</component>
-  <component name="ProjectId" id="33RRg1nUdF9lF0hnh9nZBszTpyF" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="34CORzdtVIJivxybFMZ5gXAXdMA" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.looca [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.looca-api [package].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true"
   }
-}</component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="looca-api-monitoramento" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="looca-api-monitoramento" />
-      <option name="filePath" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="looca-api-monitoramento" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="looca-api-monitoramento" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <method v="2" />
-    </configuration>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Pichau\OneDrive\Documents\SPTech\cyberbeef\looca-api-monitoramento\looca-api-prod" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="374809be-33d5-4a11-a0d4-d368cc19c99d" name="Changes" comment="" />
-      <created>1759278008015</created>
+      <changelist id="c53d65ca-7d3e-44ba-8b5b-7e7f175c0fd2" name="Changes" comment="" />
+      <created>1760714084202</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1759278008015</updated>
+      <updated>1760714084202</updated>
     </task>
     <servers />
   </component>
