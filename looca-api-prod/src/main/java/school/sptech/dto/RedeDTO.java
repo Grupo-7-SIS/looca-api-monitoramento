@@ -22,6 +22,9 @@ public class RedeDTO {
         this.dthCaptura = dthCaptura;
     }
 
+    public RedeDTO(long idRede, long idMaquina, long idComponente, double download, double upload, double packetLoss, Object dthCaptura, Class<LocalDateTime> localDateTimeClass) {
+    }
+
     public Long getIdRede() {
         return idRede;
     }

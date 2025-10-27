@@ -4,6 +4,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.dao.EmptyResultDataAccessException;
 import school.sptech.dto.RedeDTO;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
 
 public class RedeRepository {
@@ -30,11 +32,13 @@ public class RedeRepository {
     }
 
     public void salvarDadosRede(Long idMaquina, Long idComponente, Double download, Double upload, Double packetLoss) {
+        LocalDateTime brasilia = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+
         String sql = """
             INSERT INTO rede (idMaquina, idComponente, download, upload, packetLoss, dthCaptura)
-            VALUES (?, ?, ?, ?, ?, NOW())
+            VALUES (?, ?, ?, ?, ?, ?)
             """;
-        jdbcTemplate.update(sql, idMaquina, idComponente, download, upload, packetLoss);
+        jdbcTemplate.update(sql, idMaquina, idComponente, download, upload, packetLoss, brasilia);
     }
 
     public List<RedeDTO> buscarDadosRede() {
@@ -50,7 +54,7 @@ public class RedeRepository {
                 rs.getDouble("download"),
                 rs.getDouble("upload"),
                 rs.getDouble("packetLoss"),
-                rs.getTimestamp("dthCaptura").toLocalDateTime()
+                rs.getObject("dthCaptura", LocalDateTime.class)
         ));
     }
 }
