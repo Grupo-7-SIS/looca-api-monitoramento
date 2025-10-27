@@ -1,51 +1,60 @@
 #!/bin/bash
 
-# Parar execução em caso de erro
-set -e
+JAVA_REPO="https://github.com/cyberbeef-projeto/looca-api-monitoramento.git"
+JAVA_DIR="$HOME/captura-java"
+JAVA_PROJ_DIR="$JAVA_DIR/looca-api-prod"
+JAR_PATH="$JAVA_PROJ_DIR/target/looca-1.0-SNAPSHOT.jar"
+LOG_FILE="$HOME/java_app.log"
 
-REPO_URL="https://github.com/cyberbeef-projeto/looca-api-monitoramento.git"
-APP_DIR="meu-app/looca-api-prod/looca-api-prod"
-JAR_DIR="target"
+# === FUNÇÃO: FINALIZAR JAVA ===
+encerrar_java() {
+    echo
+    echo "Encerrando aplicação Java..."
+    [ ! -z "$JAVA_PID" ] && kill "$JAVA_PID" 2>/dev/null
+    exit 0
+}
 
-echo "=== Atualizando pacotes do sistema ==="
-sudo apt update -y && sudo apt upgrade -y
+# Captura Ctrl + C
+trap encerrar_java SIGINT
 
-echo "=== Instalando Java 21 (OpenJDK) ==="
-sudo apt install -y openjdk-21-jdk
+# === FUNÇÃO: VERIFICAR DEPENDÊNCIAS ===
+verificar_dependencias() {
+    sudo apt update -y
+    sudo apt install openjdk-17-jdk maven -y
+}
 
-echo "=== Verificando versão do Java ==="
-java -version
+# === FUNÇÃO: CLONAR OU ATUALIZAR PROJETO JAVA ===
+baixar_projeto_java() {
+    if [ -d "$JAVA_DIR" ]; then
+        echo "Atualizando repositório Java..."
+        cd "$JAVA_DIR" && git pull
+    else
+        echo "Clonando repositório Java..."
+        git clone "$JAVA_REPO" "$JAVA_DIR"
+    fi
+}
 
-echo "=== Instalando Maven ==="
-sudo apt install -y maven
+# === FUNÇÃO: CONSTRUIR E RODAR JAVA ===
+rodar_java() {
+    cd "$JAVA_PROJ_DIR" || exit
+    mvn clean install -DskipTests
+    if [ -f "$JAR_PATH" ]; then
+        echo "Rodando aplicação Java..."
+        java -jar "$JAR_PATH" > "$LOG_FILE" 2>&1 &
+        JAVA_PID=$!
+    else
+        echo "Erro: JAR não encontrado!"
+        exit 1
+    fi
+}
 
-echo "=== Verificando versão do Maven ==="
-mvn -version
+# === FUNÇÃO: MONITORAR LOG ===
+monitorar_log() {
+    echo "Monitorando log Java (Ctrl + C para parar):"
+    tail -f "$LOG_FILE"
+}
 
-if [ -d "$APP_DIR" ]; then
-    echo "=== Diretório '$APP_DIR' já existe, atualizando com git pull ==="
-    cd "$APP_DIR"
-    git pull
-else
-    echo "=== Clonando repositório '$REPO_URL' ==="
-    git clone "$REPO_URL" "$APP_DIR"
-    cd "$APP_DIR"
-fi
-
-echo "=== Empacotando o projeto com Maven ==="
-mvn clean package -DskipTests
-
-
-echo "=== Localizando JAR gerado ==="
-JAR_FILE=$(find "$JAR_DIR" -type f -name "*.jar" | head -n 1)
-
-if [ -z "$JAR_FILE" ]; then
-    echo "❌ Nenhum arquivo JAR encontrado em '$JAR_DIR/'"
-    exit 1
-fi
-
-echo "✅ JAR encontrado: $JAR_FILE"
-echo "=== Executando aplicação ==="
-
-# Executa o JAR
-java -jar "$JAR_FILE"
+verificar_dependencias
+baixar_projeto_java
+rodar_java
+monitorar_log
