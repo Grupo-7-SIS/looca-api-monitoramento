@@ -20,7 +20,7 @@ trap encerrar_java SIGINT
 # === FUNÇÃO: VERIFICAR DEPENDÊNCIAS ===
 verificar_dependencias() {
     sudo apt update -y
-    sudo apt install openjdk-17-jdk maven -y
+    sudo apt install openjdk-21-jdk maven -y
 }
 
 # === FUNÇÃO: CLONAR OU ATUALIZAR PROJETO JAVA ===
